@@ -29,8 +29,9 @@ public class RegistrationTest {
     public static void setup() {
         switch (String.valueOf(System.getProperty("browser"))) {
             case "firefox":
+                System.setProperty("webdriver.chrome.driver", "src/test/resources/yandexdriver.exe");
                 ChromeOptions options = new ChromeOptions();
-                options.setBinary("/src/test/resources/yandexdriver/exe");
+                options.setBrowserVersion("120");
                 driver = new ChromeDriver(options);
                 driver = new FirefoxDriver();
                 mainPage = new MainPage(driver);
@@ -39,7 +40,7 @@ public class RegistrationTest {
                 break;
             case "chrome":
             default:
-                WebDriverManager.chromedriver().clearDriverCache().setup();;
+                WebDriverManager.chromedriver().clearDriverCache().setup();
                 driver = new ChromeDriver();
                 mainPage = new MainPage(driver);
                 loginPage = new LoginPage(driver);
@@ -53,7 +54,7 @@ public class RegistrationTest {
     }
 
     @Test
-    public void successfulRegistrationTest() throws InterruptedException {
+    public void successfulRegistrationTest(){
         String email = RandomStringUtils.randomAlphabetic(10).toLowerCase() + "@" + RandomStringUtils.randomAlphabetic(6).toLowerCase() + '.' + RandomStringUtils.randomAlphabetic(3).toLowerCase();
         String name = RandomStringUtils.randomAlphabetic(10);
         String password = RandomStringUtils.randomAlphabetic(10);

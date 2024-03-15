@@ -1,7 +1,4 @@
-import diplom.pageObjects.ForgotPasswordPage;
-import diplom.pageObjects.LoginPage;
 import diplom.pageObjects.MainPage;
-import diplom.pageObjects.RegistrationPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
@@ -19,9 +16,6 @@ public class ChangeTabsTest {
                 System.setProperty("webdriver.chrome.driver", "src/test/resources/yandexdriver.exe");
                 ChromeOptions options = new ChromeOptions();
                 options.setBrowserVersion("120");
-//                options.setBinary("C:\\Users\\matem\\AppData\\Local\\Yandex\\YandexBrowser\\Application\\browser.exe");
-                options.setBinary("src/test/resources/yandexdriver.exe");
-//                WebDriverManager.chromedriver().clearDriverCache().browserVersion("120").capabilities(options).setup();
                 driver = new ChromeDriver(options);
                 mainPage = new MainPage(driver);
                 break;
@@ -44,7 +38,7 @@ public class ChangeTabsTest {
     }
 
     @Test
-    public void bunTabActiveTest() throws InterruptedException {
+    public void bunTabActiveTest() {
         mainPage.openMainPage();
         mainPage.clickOnSauceTab();
         mainPage.clickOnBunTab();

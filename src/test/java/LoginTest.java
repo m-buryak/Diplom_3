@@ -29,8 +29,9 @@ public class LoginTest {
     public static void setup() {
         switch (String.valueOf(System.getProperty("browser"))) {
             case "yandex":
+                System.setProperty("webdriver.chrome.driver", "src/test/resources/yandexdriver.exe");
                 ChromeOptions options = new ChromeOptions();
-                options.setBinary("/src/test/resources/yandexdriver/exe");
+                options.setBrowserVersion("120");
                 driver = new ChromeDriver(options);
                 mainPage = new MainPage(driver);
                 loginPage = new LoginPage(driver);
@@ -39,7 +40,7 @@ public class LoginTest {
                 break;
             case "chrome":
             default:
-                WebDriverManager.chromedriver().clearDriverCache().setup();;
+                WebDriverManager.chromedriver().clearDriverCache().setup();
                 driver = new ChromeDriver();
                 mainPage = new MainPage(driver);
                 loginPage = new LoginPage(driver);
